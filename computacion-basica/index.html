@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+  Modulo AVA: Computacion Basica
+  Archivo: computacion-basica/index.html
+  Objetivo:
+  - Describir fundamentos de hardware, software y sistemas operativos.
+  - Mantener misma navegacion y mismos botones del sitio principal.
+-->
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Modulo de Computacion Basica del AVA." />
+    <title>AVA - Computacion Basica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+    <header class="site-header" role="banner" aria-label="Encabezado del modulo Computacion Basica">
+        <div class="container py-4">
+            <h1 class="display-6 fw-bold mb-2">Modulo: Computacion Basica</h1>
+            <p class="lead mb-0">Comprende los componentes fundamentales que hacen funcionar un equipo informatico.</p>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg site-nav" role="navigation" aria-label="Navegacion principal de modulos">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuAVA"
+                aria-controls="menuAVA" aria-expanded="false" aria-label="Abrir o cerrar menu de navegacion">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menuAVA">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" role="menubar" aria-label="Lista de modulos">
+                    <li class="nav-item" role="none"><a class="nav-link" role="menuitem" tabindex="0"
+                            href="../alfabetizacion-digital/index.html">Alfabetizacion Digital</a></li>
+                    <li class="nav-item" role="none"><a class="nav-link" role="menuitem" tabindex="0"
+                            href="../netiqueta/index.html">Netiqueta</a></li>
+                    <li class="nav-item" role="none"><a class="nav-link" role="menuitem" tabindex="0"
+                            href="../computacion-basica/index.html">Computacion Basica</a></li>
+                    <li class="nav-item" role="none"><a class="nav-link" role="menuitem" tabindex="0"
+                            href="../ciberseguridad/index.html">Ciberseguridad</a></li>
+                </ul>
+
+                <div class="d-flex gap-2 align-items-center" aria-label="Controles de accesibilidad">
+                    <button id="btn-disminuir" class="btn btn-outline-light btn-sm" type="button" tabindex="0"
+                        aria-label="Disminuir tamano de fuente">A-</button>
+                    <button id="btn-aumentar" class="btn btn-outline-light btn-sm" type="button" tabindex="0"
+                        aria-label="Aumentar tamano de fuente">A+</button>
+                    <button id="btn-lectura" class="btn btn-warning btn-sm" type="button" tabindex="0"
+                        aria-label="Activar o desactivar modo de lectura de alto contraste" aria-pressed="false">Modo de
+                        Lectura</button>
+                    <span id="estado-accesibilidad" class="visually-hidden" aria-live="polite"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="contenido-principal" class="container my-4" role="main" tabindex="-1">
+        <section class="mb-4" aria-labelledby="titulo-menu-modulos" role="region">
+            <div class="welcome-menu p-4 p-md-5">
+                <h2 id="titulo-menu-modulos" class="h3 mb-2">Acceso rapido a los modulos</h2>
+                <p class="mb-4">Selecciona un modulo usando los mismos botones de la website.</p>
+
+                <div class="row g-3" role="list" aria-label="Botones de acceso a modulos del AVA">
+                    <div class="col-12 col-md-6" role="listitem"><a class="btn module-access-btn w-100"
+                            href="../alfabetizacion-digital/index.html"
+                            aria-label="Abrir modulo Alfabetizacion Digital">Ingresar a Alfabetizacion Digital</a></div>
+                    <div class="col-12 col-md-6" role="listitem"><a class="btn module-access-btn w-100"
+                            href="../netiqueta/index.html" aria-label="Abrir modulo Netiqueta">Ingresar a Netiqueta</a>
+                    </div>
+                    <div class="col-12 col-md-6" role="listitem"><a class="btn module-access-btn w-100"
+                            href="../computacion-basica/index.html"
+                            aria-label="Abrir modulo Computacion Basica">Ingresar a Computacion Basica</a></div>
+                    <div class="col-12 col-md-6" role="listitem"><a class="btn module-access-btn w-100"
+                            href="../ciberseguridad/index.html" aria-label="Abrir modulo Ciberseguridad">Ingresar a
+                            Ciberseguridad</a></div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="titulo-computacion" tabindex="0">
+            <article class="module-card" role="article" aria-label="Contenido del modulo Computacion Basica">
+                <h2 id="titulo-computacion" class="h3">Computacion Basica</h2>
+                <p>
+                    Este modulo presenta los conceptos esenciales de hardware, software y sistema operativo,
+                    necesarios para el uso eficiente de herramientas digitales.
+                </p>
+                <ul>
+                    <li>Partes internas y externas de un computador.</li>
+                    <li>Tipos de software: sistema, aplicacion y utilidades.</li>
+                    <li>Funciones del sistema operativo en la gestion de recursos.</li>
+                    <li>Mantenimiento preventivo y buenas practicas de uso.</li>
+                </ul>
+            </article>
+        </section>
+
+        <div class="mt-4">
+            <a class="btn module-access-btn" href="../AULA EDUCATIVA INTELIGENTE.html"
+                aria-label="Volver al inicio del AVA">Volver al Inicio del AVA</a>
+        </div>
+    </main>
+
+    <footer class="site-footer mt-5" role="contentinfo" aria-label="Pie de pagina del AVA">
+        <div class="container py-3">
+            <p class="mb-0">AVA Educativo Accesible - Modulo Computacion Basica.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script type="py" src="../script.py"></script>
+</body>
+
+</html>
