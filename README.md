@@ -171,7 +171,7 @@ Los resultados deben utilizarse para mejorar contenidos, instrucciones y activid
 ## Estructura técnica actual
 
 ```text
-AVA_ARCH DATA/
+PGC 2026-2/
 ├── AULA EDUCATIVA INTELIGENTE.html   # Página principal del AVA
 ├── style.css                          # Estilos compartidos
 ├── script.py                          # Funciones de accesibilidad con PyScript
