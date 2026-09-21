@@ -202,12 +202,6 @@ La versión actual utiliza HTML, CSS, Bootstrap 5.3, PyScript y JavaScript del n
 
 La versión estática no incluye autenticación, persistencia de progreso ni entrega de evidencias. Esas capacidades corresponden a la evolución hacia el EVA.
 
-## Documentación relacionada
-
-- [Modelo de información y estudio de viabilidad](MODELO_INFORMACION_Y_VIABILIDAD_AVA.md)
-- [Guía para subir el repositorio](GUIA_SUBIR_REPOSITORIO.md)
-- [Checklist para subir el repositorio](CHECKLIST_SUBIR_REPO.md)
-- [Instrucciones del monitor de chequeo AVA](INSTRUCCIONES_Monitor_Checkeo_AVA.md)
 
 ## Estado del proyecto
 
