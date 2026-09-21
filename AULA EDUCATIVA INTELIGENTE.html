@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!--
+AVA - Ambiente Virtual de Aprendizaje
+
+    Descripcion general:
+- Define la estructura semantica principal del sitio (header, nav, main, section, footer).
+- Incluye componentes accesibles con ARIA, navegacion por teclado y foco visible.
+- Carga Bootstrap 5 para acelerar el diseno responsivo.
+- Carga PyScript para ejecutar script.py en el navegador y aplicar mejoras de accesibilidad.
+-->
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Ambiente Virtual de Aprendizaje con modulos de alfabetizacion digital, netiqueta, computacion basica y ciberseguridad." />
+    <title>AULA EDUCATIVA INTELIGENTE</title>
+
+    <!--
+    Bootstrap 5:
+        - Permite una maquetacion responsiva rapida con grid y utilidades.
+        - Se combina con style.css para personalizar contraste, foco y apariencia.
+    -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+    <!--
+    PyScript (Python en navegador):
+        - Necesario para ejecutar script.py desde Go Live sin backend adicional.
+        - Habilita funciones de accesibilidad solicitadas con Python.
+    -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+    <!-- Hoja de estilos personalizada del proyecto -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+
+<body>
+    <!--
+    Enlace de salto (skip link):
+        - Mejora accesibilidad para teclado y lectores de pantalla.
+        - Permite saltar directamente al contenido principal.
+    -->
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+    <!-- Encabezado semantico principal del AVA -->
+    <header class="site-header" role="banner" aria-label="Encabezado principal del AVA">
+        <div class="container py-4 d-flex align-items-center gap-3 flex-column flex-md-row text-center text-md-start">
+            <img src="ICON_AVA.png" alt="Icono principal del AVA" width="100" height="100" class="flex-shrink-0"/>
+            <div>
+                <h1 class="display-6 fw-bold mb-2">AULA EDUCATIVA INTELIGENTE</h1>
+                <p class="lead mb-0">
+                    Plataforma educativa accesible para fortalecer competencias digitales basicas.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!--
+    Barra de navegacion semantica:
+        - role="navigation" y aria-label facilitan orientacion en lectores de pantalla.
+        - Se agregan tabindex explicitos para reforzar recorrido por teclado.
+    -->
+    <nav class="navbar navbar-expand-lg site-nav" role="navigation" aria-label="Navegacion principal de modulos">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuAVA"
+                aria-controls="menuAVA" aria-expanded="false" aria-label="Abrir o cerrar menu de navegacion">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="menuAVA">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" role="menubar" aria-label="Lista de modulos">
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" role="menuitem" tabindex="0"
+                            href="alfabetizacion-digital/index.html">Alfabetizacion
+                            Digital</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" role="menuitem" tabindex="0" href="netiqueta/index.html">Netiqueta</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" role="menuitem" tabindex="0"
+                            href="computacion-basica/index.html">Computacion Basica</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" role="menuitem" tabindex="0"
+                            href="ciberseguridad/index.html">Ciberseguridad</a>
+                    </li>
+                </ul>
+
+                <!--
+            Panel de accesibilidad:
+            - Botones controlados por Python (script.py).
+            - aria-live anuncia cambios en lectores de pantalla.
+                -->
+                <div class="d-flex gap-2 align-items-center" aria-label="Controles de accesibilidad">
+                    <button id="btn-disminuir" class="btn btn-outline-light btn-sm" type="button" tabindex="0"
+                        aria-label="Disminuir tamano de fuente">
+                        A-
+                    </button>
+                    <button id="btn-aumentar" class="btn btn-outline-light btn-sm" type="button" tabindex="0"
+                        aria-label="Aumentar tamaño de fuente">
+                        A+
+                    </button>
+                    <button id="btn-lectura" class="btn btn-warning btn-sm" type="button" tabindex="0"
+                        aria-label="Activar o desactivar modo de lectura de alto contraste" aria-pressed="false">
+                        Modo de Lectura
+                    </button>
+                    <span id="estado-accesibilidad" class="visually-hidden" aria-live="polite"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal semantico -->
+    <main id="contenido-principal" class="container my-4" role="main" tabindex="-1">
+        <section class="mb-4" aria-label="Introduccion del AVA">
+            <div class="hero-box p-4 p-md-5">
+                <h2 class="h3">Aprende con enfoque practico, etico y seguro</h2>
+                <p class="mb-0">
+                    Este AVA integra contenidos esenciales para desenvolverte en entornos digitales de forma
+                    critica, responsable y protegida.
+                </p>
+            </div>
+        </section>
+
+        <!--
+        Menu de inicio de bienvenida:
+            - Presenta una entrada clara al AVA con acceso directo a cada modulo.
+            - Usa botones tipo enlace para mejorar orientacion del usuario.
+            - Mantiene navegacion por teclado y etiquetas ARIA para lectores de pantalla.
+        -->
+        <section class="mb-4" aria-labelledby="titulo-menu-inicio" role="region">
+            <div class="welcome-menu p-4 p-md-5">
+                <h2 id="titulo-menu-inicio" class="h3 mb-2">Menu de Inicio del AVA</h2>
+                <p class="mb-4">
+                    Bienvenido. Selecciona un modulo para comenzar tu recorrido de aprendizaje.
+                </p>
+
+                <div class="row g-3" role="list" aria-label="Accesos directos a modulos de aprendizaje">
+                    <div class="col-12 col-md-6" role="listitem">
+                        <a class="btn module-access-btn w-100" href="alfabetizacion-digital/index.html" tabindex="0"
+                            aria-label="Ir al modulo de Alfabetizacion Digital">
+                            Ingresar a Alfabetizacion Digital
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6" role="listitem">
+                        <a class="btn module-access-btn w-100" href="netiqueta/index.html" tabindex="0"
+                            aria-label="Ir al modulo de Netiqueta">
+                            Ingresar a Netiqueta
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6" role="listitem">
+                        <a class="btn module-access-btn w-100" href="computacion-basica/index.html" tabindex="0"
+                            aria-label="Ir al modulo de Computacion Basica">
+                            Ingresar a Computacion Basica
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6" role="listitem">
+                        <a class="btn module-access-btn w-100" href="ciberseguridad/index.html" tabindex="0"
+                            aria-label="Ir al modulo de Ciberseguridad">
+                            Ingresar a Ciberseguridad
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--
+        Secciones de modulos:
+        - Cada section usa aria-labelledby para asociar correctamente su titulo.
+        - Cada tarjeta se disena con alto contraste y tipografia legible.
+        -->
+        <div class="row g-4">
+            <section id="alfabetizacion" class="col-12 col-md-6" aria-labelledby="titulo-alfabetizacion" tabindex="0">
+                <article class="module-card h-100" role="article" aria-label="Modulo Alfabetizacion Digital">
+                    <h3 id="titulo-alfabetizacion" class="h4">Alfabetizacion Digital</h3>
+                    <p>
+                        Comprende como buscar informacion de calidad, verificar fuentes y evaluar la
+                        confiabilidad de contenidos en la web.
+                    </p>
+                    <ul>
+                        <li>Estrategias de busqueda avanzada.</li>
+                        <li>Validacion de autoria y fecha de publicacion.</li>
+                        <li>Uso critico de informacion en contextos academicos.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="netiqueta" class="col-12 col-md-6" aria-labelledby="titulo-netiqueta" tabindex="0">
+                <article class="module-card h-100" role="article" aria-label="Modulo Netiqueta">
+                    <h3 id="titulo-netiqueta" class="h4">Netiqueta</h3>
+                    <p>
+                        Aplica normas de convivencia digital para comunicarte con respeto, claridad y empatia
+                        en plataformas virtuales.
+                    </p>
+                    <ul>
+                        <li>Buenas practicas en foros y videoconferencias.</li>
+                        <li>Uso responsable del lenguaje en linea.</li>
+                        <li>Gestion de conflictos en entornos colaborativos.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="computacion" class="col-12 col-md-6" aria-labelledby="titulo-computacion" tabindex="0">
+                <article class="module-card h-100" role="article" aria-label="Modulo Computacion Basica">
+                    <h3 id="titulo-computacion" class="h4">Computacion Basica</h3>
+                    <p>
+                        Identifica componentes clave de hardware y software, y reconoce funciones basicas de
+                        los sistemas operativos.
+                    </p>
+                    <ul>
+                        <li>Diferencias entre hardware y software.</li>
+                        <li>Tipos de sistemas operativos y su uso cotidiano.</li>
+                        <li>Mantenimiento basico de equipos.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="ciberseguridad" class="col-12 col-md-6" aria-labelledby="titulo-ciberseguridad" tabindex="0">
+                <article class="module-card h-100" role="article" aria-label="Modulo Ciberseguridad">
+                    <h3 id="titulo-ciberseguridad" class="h4">Ciberseguridad</h3>
+                    <p>
+                        Protege tu informacion personal mediante contrasenas robustas, deteccion de phishing y
+                        buenas practicas de seguridad digital.
+                    </p>
+                    <ul>
+                        <li>Creacion de contrasenas seguras y uso de gestores.</li>
+                        <li>Reconocimiento de correos y enlaces fraudulentos.</li>
+                        <li>Respaldo y proteccion de datos sensibles.</li>
+                    </ul>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <!-- Pie de pagina semantico -->
+    <footer class="site-footer mt-5" role="contentinfo" aria-label="Informacion institucional del AVA">
+        <div class="container py-3">
+            <p class="mb-0">AVA Educativo Accesible - Disenado con enfoque inclusivo y pedagogico.</p>
+        </div>
+    </footer>
+
+    <!--
+        Script Bootstrap para menu colapsable en moviles.
+        Importante para experiencia responsiva al usar navbar-expand-lg.
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!--
+    Script Python del proyecto:
+        - Maneja incremento/decremento de fuente.
+        - Activa/desactiva modo de lectura de alto contraste.
+        - Persiste preferencias de accesibilidad en el navegador.
+    -->
+    <script type="py" src="script.py"></script>
+</body>
+
+</html>

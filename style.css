@@ -1,0 +1,265 @@
+/*
+  AVA - Hoja de Cascada de estilos principal
+  
+  Objetivo:
+  - Aplicar una interfaz moderna, legible y de alto contraste.
+  - Definir estilos de foco visibles para navegacion por teclado.
+  - Crear comportamiento responsivo para movil, tablet y escritorio.
+  - Incluir modo de lectura con contraste reforzado.
+*/
+
+/*
+  Variables globales:
+  - Centralizan colores y tamanos para facilitar mantenimiento.
+  - Se usan en modo normal y se sobreescriben en modo lectura.
+*/
+:root {
+  --bg-main: #f4f8ff;
+  --bg-panel: #ffffff;
+  --bg-header: #0b2e59;
+  --bg-nav: #123d73;
+  --text-main: #13243a;
+  --text-inverse: #f8fbff;
+  --accent: #f9b233;
+  --card-border: #0f4c92;
+  --focus-ring: #ffbf47;
+  --shadow-soft: 0 10px 24px rgba(11, 46, 89, 0.12);
+  --radius-lg: 14px;
+}
+
+/*
+  Base del documento:
+  - Tipografia legible y alto interlineado para comprension.
+  - Se usa clamp para respuesta fluida en distintos anchos.
+*/
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top right, #dfeeff, var(--bg-main) 55%);
+  color: var(--text-main);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  line-height: 1.7;
+  transition: background-color 0.3s ease, color 0.3s ease, font-size 0.2s ease;
+}
+
+/*
+  Skip link:
+  - Inicialmente oculto para no interferir visualmente.
+  - Se muestra cuando recibe foco por teclado.
+*/
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -120px;
+  background: #111111;
+  color: #ffffff;
+  padding: 0.7rem 1rem;
+  z-index: 1000;
+  border-radius: 0.45rem;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* Encabezado y navegacion principal */
+.site-header {
+  background: linear-gradient(120deg, #0b2e59, #164f96);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-soft);
+}
+
+.site-nav {
+  background: var(--bg-nav);
+}
+
+.site-nav .nav-link {
+  color: #f5f9ff;
+  font-weight: 600;
+}
+
+.site-nav .nav-link:hover,
+.site-nav .nav-link:focus-visible {
+  color: #ffe3a3;
+}
+
+/*
+  Caja introductoria principal:
+  - Contraste fuerte y jerarquia visual para introducir el proposito del AVA.
+*/
+.hero-box {
+  background: linear-gradient(150deg, #eef5ff, #ffffff);
+  border: 2px solid #9cc0e9;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/*
+  Menu de bienvenida:
+  - Destaca los accesos directos a cada modulo desde el inicio.
+  - Usa fondo claro y borde con buen contraste para separar visualmente la seccion.
+*/
+.welcome-menu {
+  background: linear-gradient(145deg, #ffffff, #f3f8ff);
+  border: 2px solid #8fb7e4;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/*
+  Botones de acceso a modulos:
+  - Botones grandes y legibles para facilitar uso en escritorio y movil.
+  - Contraste alto para cumplir criterios de visibilidad.
+*/
+.module-access-btn {
+  background: #0f4c92;
+  color: #ffffff;
+  border: 2px solid #0b3970;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.85rem 1rem;
+}
+
+.module-access-btn:hover,
+.module-access-btn:focus-visible {
+  background: #0c3f79;
+  color: #ffffff;
+  border-color: #072e59;
+}
+
+/* Tarjetas de modulos educativos */
+.module-card {
+  background: var(--bg-panel);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.module-card h3 {
+  color: #0d3f78;
+  font-weight: 800;
+}
+
+.module-card ul {
+  padding-left: 1.2rem;
+  margin-bottom: 0;
+}
+
+/* Pie de pagina */
+.site-footer {
+  background: #0f2c52;
+  color: var(--text-inverse);
+}
+
+/*
+  Selector de menu (navbar toggler):
+  - Botón hamburguesa con color rojo sólido.
+  - Se aplica al ícono y al borde del botón.
+*/
+.navbar-toggler {
+  border-color: #ff0000;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ff0000' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-toggler:focus-visible {
+  border-color: #ff0000;
+  box-shadow: rgba(255, 0, 0, 0.5);
+}
+
+/*
+  Foco visible universal:
+  - Fundamental para WCAG 2.1 en navegacion por teclado.
+  - Se aplica a enlaces, botones y elementos con tabindex.
+*/
+a:focus-visible,
+button:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+
+/*
+  Modo de lectura (alto contraste):
+  - Se activa al agregar clase read-mode en body desde script.py.
+  - Refuerza contraste para mejorar visibilidad y fatiga visual.
+*/
+body.read-mode {
+  --bg-main: #020202;
+  --bg-panel: #13131300;
+  --bg-header: #0c0c0c;
+  --bg-nav: #000000;
+  --text-main: #f6f6f6;
+  --text-inverse: #ffffff;
+  --accent: #ffe35a;
+  --card-border: #ffe35a;
+  --focus-ring: #00e5ff;
+
+  background: #000000;
+  color: var(--text-main);
+}
+
+body.read-mode .site-header,
+body.read-mode .site-nav,
+body.read-mode .site-footer {
+  background: #1c2507;
+  color: var(--text-inverse);
+}
+
+body.read-mode .hero-box,
+body.read-mode .welcome-menu,
+body.read-mode .module-card {
+  background: #0c0c0c;
+  border-color: var(--card-border);
+  color: var(--text-main);
+  box-shadow: none;
+}
+
+body.read-mode .module-card h3,
+body.read-mode .site-nav .nav-link {
+  color: #fff8ba;
+}
+
+body.read-mode .module-access-btn {
+  background: #1a1a1a;
+  border-color: #fad106;
+  color: #fff8ba;
+}
+
+body.read-mode .module-access-btn:hover,
+body.read-mode .module-access-btn:focus-visible {
+  background: #383636;
+  color: #ffffff;
+}
+
+/*
+  Ajustes responsivos:
+  - En pantallas pequenas se optimiza legibilidad y area tactil.
+*/
+@media (max-width: 767.98px) {
+  .site-header h1 {
+    font-size: 1.45rem;
+  }
+
+  .site-header .lead {
+    font-size: 0.98rem;
+  }
+
+  .module-card {
+    padding: 1rem;
+  }
+
+  .welcome-menu {
+    padding: 1rem;
+  }
+
+  .site-nav .btn {
+    min-width: 4.2rem;
+  }
+}
